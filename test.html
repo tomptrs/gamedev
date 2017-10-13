@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div{
+            border:1px solid black;
+        }
+        .item-a {
+            grid-area: header;
+        }
+        
+        .item-b {
+            grid-area: main;
+        }
+        
+        .item-c {
+            grid-area: sidebar;
+        }
+        
+        .item-d {
+            grid-area: footer;
+        }
+        
+        .container {
+            display:grid;
+            grid-template-columns: 20% 20% 20% 20%;
+            grid-template-rows: 300px 300px 300px;
+            grid-template-areas: "header header header header" "main main . sidebar" "footer footer footer footer";
+            grid-column-gap: 10px;
+            grid-row-gap: 10px;
+           
+        }
+        
+        .een{
+            justify-self: center;
+            align-self: center;
+        }
+        
+        @media(max-width: 700px){
+            body{
+                background:green;
+            }   
+             .container {
+            display:grid;
+            grid-template-columns: 30% 30% 30% ;
+            
+            
+            
+            grid-column-gap: 10px;
+            grid-row-gap: 10px;
+           
+        }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <div class="een">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum totam itaque deserunt sequi iusto accusamus maiores assumenda molestiae mollitia obcaecati reprehenderit ab neque doloremque debitis, sint quae voluptatibus minus nemo!</div>
+        <div class="twee">twee</div>
+        <div class="drie">drie</div>
+        <div class="vier">vier</div>
+        <div class="vijf">vijf</div>
+        <div class="zes">zes</div>
+        <div class="zeven">zeven</div>
+        <div class="acht">acht</div>
+        <div class="negen">negen</div>
+        <div class="tien">tien</div>
+        <div class="elf">elf</div>
+        <div class="twaalf">twaalf</div>
+    </main>
+</body>
+
+</html>
