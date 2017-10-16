@@ -871,7 +871,8 @@ Nu moeten we elk oud punt invullen om de nieuwe coördinaten uit te rekenen. Voo
 
 Voor punt B krijgen we :    (30)
                             (6,18)
-                            
+         
+         
                             
 ### Translatie met een vermenigvuldiging
 
@@ -890,6 +891,17 @@ Merk op dat het oude en het nieuwe punt telkens een extra component 1 hebben. Di
 (x')        (1.x + 0.y  +1.Δx)       (x+Δx)
 (y')    =   (0.x + 1.y  +1.Δy)  =    (y+Δy)   
 (1)         (0.x + 0.y  + 1.1)       (1)
+
+#### Een voorbeeld
+
+We stellen de matrixvergelijking op op tweedimensionele voorwerpen 20 pixels naar rechts en 10 pixels naar beneden te verschuiven op het scherm, en we gebruiken de matrixvergelijking om een rechthoek met hoekpunten (linksboven) (10,10) en (rechtsonder): (20; 16,18) te verschuiven.
+
+We kunnen de nieuwe coördinaten in één keer berekenen, namelijk via vermenigvuldiging van de translatiematrix met de  matrix met de coordinaten van de punten:
+
+(x')        (1 0  20)       (10 20 )        (30 40)
+(y')    =   (0 1  10)   .   (10 16,18 )  =  (0  6,18)
+(1)         (0 0   1)       (1 1 )          (1  1)
+
 
 
 ## 2D camera in Monogame
@@ -1040,6 +1052,7 @@ x' = (cosβ -sinβ)   *   (x)
 y' = (cosβ sinβ )       (y)
 
 #### De rotatiematrix
+
 (cosβ -sinβ)   
 (cosβ sinβ )  
 
@@ -1063,6 +1076,56 @@ We gaan nu de verschillende translaties, herschalings en rotatiematrices samenst
 
 We weten dat het vermenigvuldigen van matrices niet commutatief is. Als we de volgorde, waarin matrices worden vermenigvuldigd, wijzigen krijgen we in de meeste gevallen een ander resultaat. Dit merken we ook in het volgend voorbeeld waarbij we een translatie van 20 pixels omhoog en 10 pixels naar rechts, en een spiegeling ten opzichte van de oorsprong combineren. We passen dit toe op de hoekpunten A(10,10) en B(20; 16,18) van de rechthoek. De eerste keer voeren we eerst de translatie uit, en daarna passen we de spiegeling toe. De tweede maal (rechterkolom) keren we de volgorde om, we voeren eerst de spiegeling uit en daarna verschuiven we de rechthoek:
 
+
+![alt text](vermenigvuldigen.JPG)
+
+## Voorbeeld 2D rotatie ten opzichte van een willekeurig punt
+
+We willen een rechthoek met punt (10,10) en (16,18;20) 90° draaien rond het hoekpunt (10,10), dan moeten we dat in volgende stappen doen:
+
+- stap 1: verschuiven naar de oorsprong
+- stap 2: 90° roteren
+- stap 3: terug verschuiven
+
+Een verschuiving zodat de hoekpunten terug in de oorsprong liggen:
+(1 0 -10)
+(0 1 -10)
+(0 0 1)
+
+Een rotatie over 90°
+(cos 90 -sin 90 0)
+(sin90 cos 90   0)
+(0      0       1)
+
+Terug een translatie:
+(1 0 10)
+(0 1 10)
+(0 0  1)
+
+=> Dit doen we dan als volgt:
+(x')    (1 0 10)    (cos 90 -sin 90 0)  (1 0 -10)   (x)
+(y') =  (0 1 10) .  (sin90 cos 90   0) .(0 1 -10) . (y)
+(1)     (0 0  1)    (0      0       1)  (0 0 1)     (1)
+
+> Zodra we de verschillende stappen van onze transformatie hebben en de volgorde waarin we ze moeten uitvoeren kennen, is de volgende stap het opstellen van de totale transformatiematrix. Let hierbij op dat het vermenigvuldigen van matrices niet commutatief is en dat de volgorde van de matrices dus van groot belang is. We starten met de oude coördinaten uiterst recths en plaatsen er telkens de transformatiematrix voor volgens de stappen waarin ze doorlopen worden.
+
+
+## Lineaire transformaties
+
+1. Stel de 2D transformatiematrix op om een object over PI/4 radialen te roteren in tegenwijzersin, rond het punt met coördinaten (3,1). Gebruik deze transformatiematrix om de driehoek ABC met hoekpunten A(6,1) B(8,2) en C(7,3) te roteren.
+
+
+## Camera 2D - 2
+
+ public Matrix GetViewMatrix()
+        {
+           
+            Matrix m =
+                Matrix.CreateTranslation(new Vector3(-Position, 0))*
+                 Matrix.CreateRotationZ(Rotation)*
+                Matrix.CreateScale(Zoom, Zoom, 1);
+            return m;
+        }
 
 
 # Collision Detection
