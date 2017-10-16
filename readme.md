@@ -1077,7 +1077,7 @@ We gaan nu de verschillende translaties, herschalings en rotatiematrices samenst
 We weten dat het vermenigvuldigen van matrices niet commutatief is. Als we de volgorde, waarin matrices worden vermenigvuldigd, wijzigen krijgen we in de meeste gevallen een ander resultaat. Dit merken we ook in het volgend voorbeeld waarbij we een translatie van 20 pixels omhoog en 10 pixels naar rechts, en een spiegeling ten opzichte van de oorsprong combineren. We passen dit toe op de hoekpunten A(10,10) en B(20; 16,18) van de rechthoek. De eerste keer voeren we eerst de translatie uit, en daarna passen we de spiegeling toe. De tweede maal (rechterkolom) keren we de volgorde om, we voeren eerst de spiegeling uit en daarna verschuiven we de rechthoek:
 
 
-![alt text](vermenigvuldigen.JPG)
+![alt text](vermenigvuldigen.jpg)
 
 ## Voorbeeld 2D rotatie ten opzichte van een willekeurig punt
 
